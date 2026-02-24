@@ -4,8 +4,8 @@ public class Produto {
 	
 	private static final double MARGEM_PADRAO = 0.2;
 	private String descricao;
-	private double precoCusto;
-	private double margemLucro;
+	protected double precoCusto;
+	protected double margemLucro;
 	
 	/**
      * Inicializador privado. Os valores default, em caso de erro, são:
@@ -32,7 +32,7 @@ public class Produto {
      * @param precoCusto Preço do produto (mínimo 0.01)
      * @param margemLucro Margem de lucro (mínimo 0.01)
      */
-	public Produto(String desc, double precoCusto, double margemLucro) {
+	protected Produto(String desc, double precoCusto, double margemLucro) {
 		init(desc, precoCusto, margemLucro);
 	}
 	
@@ -43,7 +43,7 @@ public class Produto {
      * @param desc Descrição do produto (mínimo de 3 caracteres)
      * @param precoCusto Preço do produto (mínimo 0.01)
      */
-	public Produto(String desc, double precoCusto) {
+	protected Produto(String desc, double precoCusto) {
 		init(desc, precoCusto, MARGEM_PADRAO);
 	}
 	
@@ -51,7 +51,7 @@ public class Produto {
      * Retorna o valor de venda do produto, considerando seu preço de custo e margem de lucro.
      * @return Valor de venda do produto (double, positivo)
      */
-	public double valorDeVenda() {
+	public double valorVenda() {
 		return (precoCusto * (1.0 + margemLucro));
 	}
 	

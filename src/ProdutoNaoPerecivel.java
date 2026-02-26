@@ -11,6 +11,6 @@ public class ProdutoNaoPerecivel extends Produto {
     
     @Override
     public double valorVenda() {
-		//return (precoCusto * (1.0 + margemLucro));
+	    return (precoCusto * (1.0 + margemLucro));
 	}
 }

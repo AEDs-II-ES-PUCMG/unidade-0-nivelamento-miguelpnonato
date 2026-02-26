@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class ProdutoPerecivel extends Produto {
-    private LocalDate dataDeValidade;
+    private LocalDate dataValidade;
     private static final double DESCONTO = 0.25;
     private static final int PRAZO_DESCONTO= 7; 
 
@@ -11,13 +11,13 @@ public class ProdutoPerecivel extends Produto {
         if(validade.isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("O produto está vencido!");
         }   
-        dataDeValidade = validade; 
+        dataValidade = validade; 
     }
 
    @Override
-    public double valorDeVenda() {
+    public double valorVenda() {
 		double desconto = 0d;
-        int diasValidade = LocalDate.now().until(dataDeValidade).getDays();
+        int diasValidade = LocalDate.now().until(dataValidade).getDays();
         if (diasValidade <= PRAZO_DESCONTO) {
             desconto=DESCONTO;
         }
@@ -29,7 +29,7 @@ public class ProdutoPerecivel extends Produto {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         
         String dados = super.toString();
-        dados += "\nVálido até: " + formato.format(dataDeValidade);
+        dados += "\nVálido até: " + formato.format(dataValidade);
         return dados;
     }
     
